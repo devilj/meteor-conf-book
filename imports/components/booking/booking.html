@@ -1,0 +1,66 @@
+<login-buttons></login-buttons>
+
+<div>
+    <h1>Book {{ $ctrl.location.name }} schedule for {{ $ctrl.calendarTitle }}</h1>
+</div>
+
+<div>
+    <div class="row">
+
+        <div class="col-md-6 text-center">
+            <div class="btn-group">
+
+                <button
+                        class="btn btn-primary"
+                        mwl-date-modifier
+                        date="$ctrl.viewDate"
+                        decrement="$ctrl.calendarView"
+                        ng-click="$ctrl.cellIsOpen = false">
+                    Previous
+                </button>
+                <button
+                        class="btn btn-default"
+                        mwl-date-modifier
+                        date="$ctrl.viewDate"
+                        set-to-today
+                        ng-click="$ctrl.cellIsOpen = false">
+                    Today
+                </button>
+                <button
+                        class="btn btn-primary"
+                        mwl-date-modifier
+                        date="$ctrl.viewDate"
+                        increment="$ctrl.calendarView"
+                        ng-click="$ctrl.cellIsOpen = false">
+                    Next
+                </button>
+            </div>
+        </div>
+
+        <br class="visible-xs visible-sm">
+
+        <div class="col-md-6 text-center">
+            <div class="btn-group">
+                <label class="btn btn-primary" ng-model="$ctrl.calendarView" uib-btn-radio="'year'" ng-click="$ctrl.cellIsOpen = false">Year</label>
+                <label class="btn btn-primary" ng-model="$ctrl.calendarView" uib-btn-radio="'month'" ng-click="$ctrl.cellIsOpen = false">Month</label>
+                <label class="btn btn-primary" ng-model="$ctrl.calendarView" uib-btn-radio="'week'" ng-click="$ctrl.cellIsOpen = false">Week</label>
+                <label class="btn btn-primary" ng-model="$ctrl.calendarView" uib-btn-radio="'day'" ng-click="$ctrl.cellIsOpen = false">Day</label>
+            </div>
+        </div>
+
+    </div>
+
+    <mwl-calendar class="col-xs-10"
+                  view="$ctrl.calendarView"
+                  view-date="$ctrl.viewDate"
+                  events="$ctrl.events"
+                  view-title="$ctrl.calendarTitle"
+                  day-view-start="06:00"
+                  day-view-end="23:00"
+                  day-view-time-position="side"
+                  on-date-range-select="$ctrl.rangeSelected(calendarRangeStartDate, calendarRangeEndDate)"
+                  on-event-click="$ctrl.eventClicked(calendarEvent)"
+                  on-event-times-changed="calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+                  cell-is-open="false">
+    </mwl-calendar>
+</div>
