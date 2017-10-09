@@ -1,10 +1,10 @@
-<div class="location-lists" style="vertical-align: top; float: none; font-weight: 100;  margin-bottom: 15px; margin-top: 30px; text-align: left;">
+<div class="location-lists location-list">
     <login-buttons></login-buttons>
     <div>
         <p class="gtm-thin gtm-thinn">Locations<i class="fa fa-map-marker" aria-hidden="true"></i></p>
     </div>
 
-    <p ng-repeat="location in $ctrl.locationsList" class="gtm-black" style="margin: 0px; color: rgb(187, 159, 125); font-size: 30px; text-transform: uppercase;">
+    <p ng-repeat="location in $ctrl.locationsList" class="gtm-black list-item">
         <a href="#!/{{location.code}}/book">{{location.name}}</a>
     </p>
 

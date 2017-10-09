@@ -5,6 +5,15 @@
     width: 48%;
 }
 
+.location-lists {
+    vertical-align: top;
+    float: none;
+    font-weight: 100;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    text-align: left;
+}
+
 .gtm-thin {
     font-family: "Gotham A", "Gotham B";
     font-weight: 100;
@@ -32,3 +41,9 @@ a {
     color: inherit
 }
 
+.list-item {
+    margin: 0px;
+    color: rgb(187, 159, 125);
+    font-size: 30px;
+    text-transform: uppercase;
+}
