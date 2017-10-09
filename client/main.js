@@ -20,6 +20,8 @@ angular.module(App, [
     'mwl.calendar'
 ]).config(['$angularTemplatesSettings', function($angularTemplatesSettings) {
     // Turn off throwing errors
+    // meteor can't find bootstrap calendar templates, but they are there!
+    // need to take a look
     $angularTemplatesSettings.error = false;
 
     // Turn off displaying warnings inside console

@@ -29,6 +29,10 @@ export default class RoutesConfig extends Config {
                 },
                 resolve: {
                     location: ($q, $stateParams) => {
+
+                        // we need to wait for meteor collection to initialize
+                        // there seems to be no reliable way to do that without Meteor.subscribe
+                        // see https://stackoverflow.com/questions/46376248/meteorjs-connection-delay-issues/46377207
                         let defer = $q.defer();
 
                         let location = null;
