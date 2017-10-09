@@ -23,8 +23,16 @@ export default class BookingController {
     }
 
     unbook(startsAt) {
-        Meteor.call('location.unbook', this.location, startsAt);
-        this.events = _.reject(this.events, (event) => { return event.startsAt === startsAt });
+        let eventFilter = (event) => {
+            return event.startsAt === startsAt
+        };
+        let event = _.find(this.events, eventFilter);
+        if (Meteor.user() && event.owner === Meteor.user().username) {
+            Meteor.call('location.unbook', this.location, startsAt);
+            this.events = _.reject(this.events, eventFilter);
+        } else {
+            alert('you can\'t touch this');
+        }
     }
 
     openModal = (startsAt, endsAt) => {

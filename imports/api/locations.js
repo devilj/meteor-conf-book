@@ -13,12 +13,22 @@ Meteor.methods({
         });
     },
     'location.unbook' (location, startsAt) {
-        Locations.update(location._id, {
-            $pull: {
-                bookings: {
-                    startsAt: startsAt,
-                }
+        let findOne = Locations.findOne({
+            _id: location._id,
+            bookings: {
+                startsAt: startsAt,
+                owner: Meteor.user().username
             }
         });
+
+        if (findOne) {
+            Locations.update(location._id, {
+                $pull: {
+                    bookings: {
+                        startsAt: startsAt,
+                    }
+                }
+            });
+        }
     }
 });
